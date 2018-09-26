@@ -1,0 +1,11 @@
+/* eslint-disable */
+export const LOGIN = 'LOGIN'
+export const SET_CLASSIFY = 'SET_CLASSIFY'
+export const LOAD_BREADCRUMB = 'LOAD_BREADCRUMB'
+export const SELECT_MEDIA = 'SELECT_MEDIA'
+export const SELECT_ONE = 'SELECT_ONE'
+export const REMOVE_MEDIA = 'REMOVE_MEDIA'
+export const GET_ALL_MEDIA = 'GET_ALL_MEDIA'
+export const GET_GALLERY = 'GET_GALLERY'
+export const PUT_SIDEBAR = 'PUT_SIDEBAR'
+export const DESTROY_SIDEBAR = 'DESTROY_SIDEBAR'

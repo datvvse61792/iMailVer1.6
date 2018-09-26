@@ -1,0 +1,62 @@
+body {
+  text-shadow: none;
+
+}
+
+header {
+  margin-bottom: 1rem;
+}
+
+.white-box {
+  background: white;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+
+.white-box {
+  max-width: 40em;
+  background: white;
+  color: black;
+}
+
+.table th, .table td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  word-break: break-all;
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.icon.left {
+  margin-right: 5px;
+}
+
+#__layout,
+#__nuxt {
+  width: 100%;
+}
+
+.active, .btn:hover {
+  background-color: #666;
+  color: white;
+}
+
+.active {
+  font-weight: bold;
+
+}
+.container{
+  padding-top: 50px;
+  width: 100%;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
