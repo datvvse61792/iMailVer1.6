@@ -20,6 +20,8 @@ router.post('/', function (req, res) {
         }
         if (keys.length) {
             keys[0].key = req.body.key
+            keys[0].key_id = req.body.key_id
+            keys[0].fingerprint = req.body.fingerprint
             keys[0].save()
             res.json(keys[0])
         } else {
