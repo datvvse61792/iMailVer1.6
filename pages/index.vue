@@ -81,9 +81,6 @@
                             </template>
                         </b-table>
                     </div>
-                    <div class="paging">
-
-                    </div>
                 </div>
             </b-col>
         </b-row>
