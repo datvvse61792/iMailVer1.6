@@ -15,9 +15,6 @@
                 <b-button-group class="mx-1">
                     <b-btn @click="exportKey()">Export</b-btn>
                 </b-button-group>
-                <b-button-group class="mx-1">
-                    <b-btn @click="showKey()">show</b-btn>
-                </b-button-group>
             </b-button-toolbar>
         </div>
         <div v-else>
