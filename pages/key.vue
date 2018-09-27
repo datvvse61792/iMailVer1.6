@@ -92,11 +92,6 @@
                 let blob = new Blob([text], {type: 'text/plain;charset=utf-8'})
                 FileSaver.saveAs(blob, 'key.asc')
             },
-
-            publicKeyInfo() {
-                let pubKey = openpgp.key.readArmored(this.publicKey).keys
-                return pubKey[0].primaryKey
-            },
             showKey() {
                 this.getKeyInfo()
             },
