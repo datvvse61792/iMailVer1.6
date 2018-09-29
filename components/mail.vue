@@ -160,8 +160,7 @@
                                 let pubKey = openpgp.key.readArmored(publicKey).keys
                                 let keyInfo = pubKey[0].primaryKey
                                 let userInfo = pubKey[0].users[0]
-                                console.dir(pubKey)
-                                this.alertMessage = 'Email này đã được kí bởi: <br/>' + userInfo.userId.userid + '<br/>Key ID: ' + keyInfo.keyid.toHex().toUpperCase() + '<br/>Fingerprint: ' + keyInfo.getFingerprint().toUpperCase()
+                                this.alertMessage = 'Email này đã được kí bởi: <br/>Tên: ' + userInfo.userId.name + '<br/>Email: ' + userInfo.userId.email + '<br/>Key ID: ' + keyInfo.keyid.toHex().toUpperCase() + '<br/>Fingerprint: ' + keyInfo.getFingerprint().toUpperCase()
                             } else {
                                 this.alertMessage = 'Không thể xác thực được chữ kí. Nội dung có thể đã bị thay đổi!'
                             }
