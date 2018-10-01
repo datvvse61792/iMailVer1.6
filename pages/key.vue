@@ -51,6 +51,11 @@
         },
 
         methods: {
+
+            /**
+             * Generate OpenPGP Key-pair for user
+             * Public key will be uploaded to public key server after generated
+             */
             async generateKey() {
                 let options = {
                     userIds: [{name: this.$auth.user.name, email: this.$auth.user.email}],
@@ -69,6 +74,7 @@
                     let publicKeyInfo = openpgp.key.readArmored(this.publicKey).keys
                     let keyId = publicKeyInfo[0].primaryKey.keyid.toHex().toUpperCase()
                     let fingerprint = publicKeyInfo[0].primaryKey.getFingerprint().toUpperCase()
+                    // Sending public key information to public key server
                     this.$axios.post('/api/key', {
                         email: this.$auth.user.email,
                         key_id: keyId,
@@ -86,16 +92,19 @@
                 this.getKeyInfo()
             },
 
+            /**
+             * Export key-pair as 'key.asc' file for storage purpose.
+             */
             exportKey() {
                 let FileSaver = require('file-saver')
                 let text = this.publicKey + '\n' + this.privateKey
                 let blob = new Blob([text], {type: 'text/plain;charset=utf-8'})
                 FileSaver.saveAs(blob, 'key.asc')
             },
-            showKey() {
-                this.getKeyInfo()
-            },
 
+            /**
+             * Load information from key-pair file and import it into localStorage
+             */
             loadTextFromFile(event) {
                 const fileList = event.target.files
                 let file = fileList[0]
@@ -128,6 +137,10 @@
                     })
                 }
             },
+
+            /**
+             * Set the information of user and key from localStorage key-pair
+             */
             getKeyInfo() {
                 if (this.privateKey) {
                     let keyring = new openpgp.Keyring()

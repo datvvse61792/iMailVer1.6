@@ -205,7 +205,7 @@
         methods: {
             async google() {
                 await this.$auth.loginWith('social').then(response => {
-
+                    console.dir(response)
                 }).catch(e => {
                     console.log(e)
                 })

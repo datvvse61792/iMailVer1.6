@@ -12,7 +12,6 @@
                 <nav class="nav nav-masthead justify-content-center">
                     <nuxt-link to="/" class="nav-link active" v-if="!$auth.user">Trang chủ</nuxt-link>
                     <nuxt-link to="/policy" class="nav-link active" v-if="!$auth.user">Chính sách</nuxt-link>
-                    <nuxt-link to="/encryptfile" class="nav-link active" v-if="!$auth.user">Mã hóa file</nuxt-link>
                     <nuxt-link to="/" class="nav-link" v-else>
                         <i class="mdi mdi-light mdi-email"></i>
                         <span class="has-icon-left">Hòm thư</span>
