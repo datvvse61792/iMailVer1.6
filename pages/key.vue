@@ -1,6 +1,6 @@
 <template>
     <b-container class="white-box" v-if="$auth.user">
-        <div v-if="publicKey && privateKey" class="lead">
+        <div v-if="privateKey" class="lead">
             <div class="mb-3" v-if="userInfo">
                 <h3 class="text-center">Thông tin về khóa của bạn</h3>
                 <p>Tên: <strong>{{userInfo.name}}</strong></p>
@@ -67,10 +67,8 @@
                     this.publicKey = key.publicKeyArmored
                     localStorage.removeItem('email')
                     localStorage.removeItem('privateKey')
-                    localStorage.removeItem('publicKey')
                     localStorage.setItem('email', this.$auth.user.email)
                     localStorage.setItem('privateKey', this.privateKey)
-                    localStorage.setItem('publicKey', this.publicKey)
                     let publicKeyInfo = openpgp.key.readArmored(this.publicKey).keys
                     let keyId = publicKeyInfo[0].primaryKey.keyid.toHex().toUpperCase()
                     let fingerprint = publicKeyInfo[0].primaryKey.getFingerprint().toUpperCase()
@@ -97,7 +95,7 @@
              */
             exportKey() {
                 let FileSaver = require('file-saver')
-                let text = this.publicKey + '\n' + this.privateKey
+                let text = this.privateKey
                 let blob = new Blob([text], {type: 'text/plain;charset=utf-8'})
                 FileSaver.saveAs(blob, 'key.asc')
             },
@@ -120,11 +118,9 @@
                         let result = e.target.result
                         let regex = /-----BEGIN PGP PRIVATE KEY BLOCK-----/i
                         let index = regex.exec(result).index - 1
-                        this.publicKey = result.substring(0, index)
                         this.privateKey = result.substring(index + 1, result.length - 1)
                         localStorage.setItem('email', this.$auth.user.email)
                         localStorage.setItem('privateKey', this.privateKey)
-                        localStorage.setItem('publicKey', this.publicKey)
                         this.getKeyInfo()
                     }
                     reader.readAsText(file)
@@ -149,9 +145,8 @@
                         keyring.store()
                     }
                     let keys = keyring.privateKeys.keys
-                    let pubKey = openpgp.key.readArmored(this.publicKey).keys
                     this.userInfo = keys[0].users[0].userId
-                    this.keyInfo = pubKey[0].primaryKey
+                    this.keyInfo = keys[0].primaryKey
                 }
             },
 
