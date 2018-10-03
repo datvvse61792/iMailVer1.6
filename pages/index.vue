@@ -344,8 +344,6 @@
 
                 this.$axios.post(sendUrl, {raw: raw}).then(res => {
                     this.message = ''
-                    this.hasKeyPassword = true
-                    this.keyPassword = ''
                     this.$toasted.show('Đã gửi thành công!', {
                         theme: 'bubble',
                         position: 'top-center',
@@ -446,6 +444,8 @@
                             }
                             openpgp.encrypt(options).then(ciphertext => {
                                 this.message = ciphertext.data
+                                this.hasKeyPassword = true
+                                this.keyPassword = ''
                                 this.$toasted.show('Mã hóa thành công!', {
                                     theme: 'bubble',
                                     position: 'top-center',
