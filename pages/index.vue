@@ -344,6 +344,8 @@
 
                 this.$axios.post(sendUrl, {raw: raw}).then(res => {
                     this.message = ''
+                    this.hasKeyPassword = true
+                    this.keyPassword = ''
                     this.$toasted.show('Đã gửi thành công!', {
                         theme: 'bubble',
                         position: 'top-center',

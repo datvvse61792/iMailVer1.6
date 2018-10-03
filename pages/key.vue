@@ -147,6 +147,7 @@
                     let keys = keyring.privateKeys.keys
                     this.userInfo = keys[0].users[0].userId
                     this.keyInfo = keys[0].primaryKey
+                    console.dir(keys)
                 }
             },
 
